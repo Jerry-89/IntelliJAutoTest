@@ -30,7 +30,7 @@ public class SelTestTutorialPoint {
     @Test
     public void checkBoxTest(){
 //otvori stranku webu
-        ovladac.get("https://www.tutorialspoint.com/selenium/practice/check-box.php")
+        ovladac.get("https://www.tutorialspoint.com/selenium/practice/check-box.php");
 //rozkliknutie "+ " tlacitka - toto nema ID takze som skopiroval Xpath
         ovladac.findElement(By.xpath("//*[@id=\"bs_1\"]/span[1]")).click();
         //kliknutie na checkboxy podla ich ID, takisto mozno pouzit Xpath
