@@ -1,3 +1,4 @@
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -15,12 +16,12 @@ public class TutorialPointFormTest {
     private WebDriver ovladac;
 
     @Before
-    public void totoPredKazdymTestom(){
+    public void totoPredKazdymTestom() {
         WebDriverManager.chromedriver().setup();
         ovladac = new ChromeDriver();
-
-    @Given("Uzivatel je na stranke tutorialspoint student form")
     }
+    @Given("Uzivatel je na stranke tutorialspoint student form")
+
     public void uzivatelJeNaStrankeTutorialspointStudentForm() {
         ovladac.get("https://www.tutorialspoint.com/selenium/practice/selenium_automation_practice.php");
     }
@@ -37,12 +38,11 @@ public class TutorialPointFormTest {
 
     @And("Uzivatel klikne na pohlavie {string}")
     public void uzivatelKlikneNaPohlavie(String pohlavie) {
-        if (pohlavie.equals("male"){
+        if (pohlavie.equals("male")) {
             ovladac.findElement(By.id("gender")).click();
 
-        }
-        else if(pohlavie.equals("female")) {
-            ovladac.findElement(By.xpath("//*[@id="practiceForm"]/div[3]/div/div/div[2]/input")).click();
+        } else if (pohlavie.equals("female")) {
+            ovladac.findElement(By.xpath("//*[@id=\"practiceForm\"]/div[3]/div/div/div[2]/input")).click();
 
         }
     }
@@ -54,5 +54,11 @@ public class TutorialPointFormTest {
 
     @Then("Radiobutton Male je odskrtnuty")
     public void radiobuttonMaleJeOdskrtnuty() {
+    }
+    //tu dam kod, ktory zatvori okno po kazdom teste
+    @After
+    public void totoPoKazdomTeste(){
+        ovladac.close();
+        ovladac.quit();
     }
 }
