@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -19,10 +20,12 @@ public class TutorialPointFormTest {
     @Given("Uzivatel je na stranke tutorialspoint student form")
     }
     public void uzivatelJeNaStrankeTutorialspointStudentForm() {
+        ovladac.get("https://www.tutorialspoint.com/selenium/practice/selenium_automation_practice.php");
     }
 
     @When("Uzivatel zada svoje meno {string}")
     public void uzivatelZadaSvojeMenoName(String arg0) {
+        ovladac.findElement(By.id("name")).sendKeys(jmeno);
     }
 
     @And("Uzivatel zada svoj email {string}")
