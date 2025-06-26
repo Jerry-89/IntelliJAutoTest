@@ -1,9 +1,12 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 
 public class SelTestTutorialPoint {
@@ -15,7 +18,9 @@ public class SelTestTutorialPoint {
     @BeforeEach
     public void setUp(){
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\HP\\IdeaProjects\\AUtoTest\\src\\main\\resources\\chromedriver.exe");
+      //  System.setProperty("webdriver.chrome.driver", "C:\\Users\\HP\\IdeaProjects\\AUtoTest\\src\\main\\resources\\chromedriver.exe");
+      //  ovladac = new ChromeDriver();
+        WebDriverManager.chromedriver().setup(); //tento riadok nahradil 2 predosle a nie je potrebne stahovat ziadny webdriver
         ovladac = new ChromeDriver();
 
     }
@@ -36,6 +41,7 @@ public class SelTestTutorialPoint {
         //kliknutie na checkboxy podla ich ID, takisto mozno pouzit Xpath
         ovladac.findElement(By.id("c_bf_1")).click();
         ovladac.findElement(By.id("c_bf_2")).click();
+        assertTrue(ovladac.findElement(By.id("c_bs_1")).isSelected()); //asserttrue overuje ci je hodnota true alebo false - v tomto pripade ci je zaskrtnuty box alebo nie
     }
 
 
